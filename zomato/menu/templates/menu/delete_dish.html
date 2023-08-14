@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Dish</title>
+</head>
+<body>
+    <h1>Delete Dish</h1>
+    <p>Are you sure you want to delete '{{ dish.name }}'?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete Dish</button>
+    </form>
+</body>
+</html>

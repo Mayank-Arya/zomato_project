@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Details</title>
+</head>
+<body>
+    <h1>Order Details</h1>
+    <p><strong>Order ID:</strong> {{ order.order_id }}</p>
+    <p><strong>Customer Name:</strong> {{ order.customer_name }}</p>
+    <p><strong>Status:</strong> {{ order.get_status_display }}</p>
+    <h2>Dishes Ordered:</h2>
+    <ul>
+        {% for dish in order.dish_ids.all %}
+            <li>{{ dish.name }} - Price: {{ dish.price }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
