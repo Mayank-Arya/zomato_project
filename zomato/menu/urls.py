@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.dish_list, name='dish_list'),
+    path('', views.menu, name='menu'),
     path('add/', views.add_dish, name='add_dish'),
     path('update/<int:dish_id>/', views.update_dish, name='update_dish'),  # URL for updating a dish
     path('delete/<int:dish_id>/', views.delete_dish, name='delete_dish'),

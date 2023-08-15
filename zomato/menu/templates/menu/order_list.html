@@ -3,11 +3,15 @@
 <head>
     <title>Order List</title>
 </head>
-<body>
-    <h1>Order List</h1>
-    <ul>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0;">
+    <h1 style="text-align: center;">Order List</h1>
+    <ul style="list-style: none; padding: 0;">
         {% for order in orders %}
-            <li>{{ order.customer_name }} - Status: {{ order.get_status_display }}</li>
+            <li style="background-color: #fff; padding: 15px; margin: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+                Order ID: {{ order.id }}<br>
+                Customer: {{ order.customer_name }}<br>
+                Status: {{ order.status }}
+            </li>
         {% endfor %}
     </ul>
 </body>

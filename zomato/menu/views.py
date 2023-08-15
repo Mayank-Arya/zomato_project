@@ -7,20 +7,24 @@ from .forms import OrderForm, UpdateOrderStatusForm
 # Create your views here.
 
 
-def dish_list(request):
+def index(request):
+    return render(request, 'index.html')
+
+def menu(request):
     dishes = Dish.objects.all()
-    return render(request, 'menu/dish_list.html', {'dishes': dishes})
+    return render(request, 'menu/menu.html', {'dishes': dishes})
 
 
 def add_dish(request):
     if request.method == 'POST':
-        form = DishForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('dish_list')
-    else:
-        form = DishForm()
-    return render(request, 'menu/add_dish.html', {'form': form})
+        # Process the form data and create a new dish
+        name = request.POST['name']
+        price = request.POST['price']
+        availability = request.POST['availability']
+        new_dish = Dish(name=name, price=price, availability=availability)
+        new_dish.save()
+        return redirect('menu')  # Update this line to redirect to 'menu'
+    return render(request, 'menu/add_dish.html')
 
 
 def update_dish(request, dish_id):

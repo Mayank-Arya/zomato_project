@@ -3,16 +3,18 @@
 <head>
     <title>Order Details</title>
 </head>
-<body>
-    <h1>Order Details</h1>
-    <p><strong>Order ID:</strong> {{ order.order_id }}</p>
-    <p><strong>Customer Name:</strong> {{ order.customer_name }}</p>
-    <p><strong>Status:</strong> {{ order.get_status_display }}</p>
-    <h2>Dishes Ordered:</h2>
-    <ul>
-        {% for dish in order.dish_ids.all %}
-            <li>{{ dish.name }} - Price: {{ dish.price }}</li>
-        {% endfor %}
-    </ul>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0;">
+    <h1 style="text-align: center;">Order Details</h1>
+    <div style="background-color: #fff; padding: 20px; margin: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+        <strong>Order ID:</strong> {{ order.id }}<br>
+        <strong>Customer:</strong> {{ order.customer_name }}<br>
+        <strong>Status:</strong> {{ order.status }}<br>
+        <strong>Dishes:</strong>
+        <ul style="list-style: none; padding: 0;">
+            {% for dish in order.dishes.all %}
+                <li>{{ dish.name }} (${{ dish.price }})</li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

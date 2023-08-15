@@ -3,12 +3,20 @@
 <head>
     <title>Update Dish</title>
 </head>
-<body>
-    <h1>Update Dish</h1>
-    <form method="post">
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0;">
+    <h1 style="text-align: center;">Update Dish</h1>
+    <form action="{% url 'update_dish' dish_id=dish.id %}" method="post" style="max-width: 400px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Update Dish</button>
+        <label for="name">Dish Name:</label>
+        <input type="text" id="name" name="name" value="{{ dish.name }}" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <label for="price">Price ($):</label>
+        <input type="number" id="price" name="price" value="{{ dish.price }}" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <label for="availability">Availability:</label>
+        <select id="availability" name="availability" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            <option value="1" {% if dish.availability %}selected{% endif %}>Available</option>
+            <option value="0" {% if not dish.availability %}selected{% endif %}>Not Available</option>
+        </select>
+        <button type="submit" style="background-color: #333; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Update Dish</button>
     </form>
 </body>
 </html>
